@@ -1,21 +1,842 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html class="no-js" lang="zxx">
 
-        <title>Jobs</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job Board</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- {{asset('assets/images/job.png')}} -->
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slicknav.css')}}">
 
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, sans-serif;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::-webkit-backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.ml-4{margin-left:1rem}.mt-16{margin-top:4rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.-mt-px{margin-top:-1px}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-16{height:4rem}.h-7{height:1.75rem}.h-6{height:1.5rem}.h-5{height:1.25rem}.min-h-screen{min-height:100vh}.w-auto{width:auto}.w-16{width:4rem}.w-7{width:1.75rem}.w-6{width:1.5rem}.w-5{width:1.25rem}.max-w-7xl{max-width:80rem}.shrink-0{flex-shrink:0}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity))}.bg-dots-darker{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")}.from-gray-700\/50{--tw-gradient-from:rgb(55 65 81 / 0.5);--tw-gradient-to:rgb(55 65 81 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}.bg-center{background-position:center}.stroke-red-500{stroke:#ef4444}.stroke-gray-400{stroke:#9ca3af}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-gray-500\/20{--tw-shadow-color:rgb(107 114 128 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-red-500 *::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-red-500::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}.focus\:rounded-sm:focus{border-radius:0.125rem}.focus\:outline:focus{outline-style:solid}.focus\:outline-2:focus{outline-width:2px}.focus\:outline-red-500:focus{outline-color:#ef4444}.group:hover .group-hover\:stroke-gray-600{stroke:#4b5563}@media (prefers-reduced-motion: no-preference){.motion-safe\:hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:bg-gray-800\/50{background-color:rgb(31 41 55 / 0.5)}.dark\:bg-red-800\/20{background-color:rgb(153 27 27 / 0.2)}.dark\:bg-dots-lighter{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}.dark\:bg-gradient-to-bl{background-image:linear-gradient(to bottom left, var(--tw-gradient-stops))}.dark\:stroke-gray-600{stroke:#4b5563}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.dark\:ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.dark\:ring-inset{--tw-ring-inset:inset}.dark\:ring-white\/5{--tw-ring-color:rgb(255 255 255 / 0.05)}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.group:hover .dark\:group-hover\:stroke-gray-400{stroke:#9ca3af}}@media (min-width: 640px){.sm\:fixed{position:fixed}.sm\:top-0{top:0px}.sm\:right-0{right:0px}.sm\:ml-0{margin-left:0px}.sm\:flex{display:flex}.sm\:items-center{align-items:center}.sm\:justify-center{justify-content:center}.sm\:justify-between{justify-content:space-between}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:gap-8{gap:2rem}.lg\:p-8{padding:2rem}}
-        </style>
-    </head>
-    <body>
-        <h1>Jobs</h1>
-    </body>
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid ">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="{{asset('assets/img/logo.png')}}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-10">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="index.html">home</a></li>
+                                            <li><a href="jobs.html">Browse Job</a></li>
+                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="candidate.html">Candidates </a></li>
+                                                    <li><a href="job_details.html">job details </a></li>
+                                                    <li><a href="elements.html">elements</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">blog</a></li>
+                                                    <li><a href="single-blog.html">single-blog</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li>
+                                                @if (Route::has('login'))
+                                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-left">
+                                                @auth
+                                                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                                                @else
+                                                    <a href="/google-auth/redirect" class="mr-2 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mx-8">Google</a>
+                                                    <a href="{{ route('login') }}" class="mr-2font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mx-6">Log in</a>
+
+                                                    @if (Route::has('register'))
+                                                        <a href="{{ route('register') }}" class="ml-2 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                                    @endif
+                                                @endauth
+                                            </div>
+                                        @endif</li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+ 
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="slider_text">
+                            <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">4536+ Jobs listed</h5>
+                            <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Find your Dream Job</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">We provide online instant cash loans with quick approval that suit your term length</p>
+                            <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                                <a href="#" class="boxed-btn3">Upload your Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+            <img src="{{asset('assets/img/banner/illustration.png')}}" alt="">
+        </div>
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- catagory_area -->
+    <div class="catagory_area">
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" placeholder="Search keyword">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select class="wide" >
+                            <option data-display="Location">Location</option>
+                            <option value="1">Dhaka</option>
+                            <option value="2">Rangpur</option>
+                            <option value="4">Sylet</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select class="wide">
+                            <option data-display="Category">Category</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="4">Category 3</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="job_btn">
+                        <a href="#" class="boxed-btn3">Find Job</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="popular_search d-flex align-items-center">
+                        <span>Popular Search:</span>
+                        <ul>
+                            <li><a href="#">Design & Creative</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Administration</a></li>
+                            <li><a href="#">Teaching & Education</a></li>
+                            <li><a href="#">Engineering</a></li>
+                            <li><a href="#">Software & Web</a></li>
+                            <li><a href="#">Telemarketing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ catagory_area -->
+
+    <!-- popular_catagory_area_start  -->
+    <div class="popular_catagory_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-40">
+                        <h3>Popolar Categories</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Design & Creative</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Marketing</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Telemarketing</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Software & Web</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Administration</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Teaching & Education</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Engineering</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Garments / Textile</h4></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popular_catagory_area_end  -->
+
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section_title">
+                        <h3>Job Listing</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="brouse_job text-right">
+                        <a href="jobs.html" class="boxed-btn4">Browse More Job</a>
+                    </div>
+                </div>
+            </div>
+            <div class="job_lists">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/1.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Software Engineer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/2.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/3.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Wordpress Developer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/4.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Visual Designer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/5.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Software Engineer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="{{asset('assets/img/svg_icon/1.svg')}}" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details.html"><h4>Creative Designer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                </div>
+                                <div class="date">
+                                    <p>Date line: 31 Jan 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+
+    <!-- featured_candidates_area_start  -->
+    <div class="featured_candidates_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center mb-40">
+                        <h3>Featured Candidates</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/1.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/2.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/3.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/4.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/5.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/6.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/7.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/8.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/9.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/9.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/10.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/3.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="{{asset('assets/img/candiateds/4.png')}}" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- featured_candidates_area_end  -->
+
+    <div class="top_companies_area">
+        <div class="container">
+            <div class="row align-items-center mb-40">
+                <div class="col-lg-6 col-md-6">
+                    <div class="section_title">
+                        <h3>Top Companies</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="brouse_job text-right">
+                        <a href="jobs.html" class="boxed-btn4">Browse More Job</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="{{asset('assets/img/svg_icon/5.svg')}}" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="{{asset('assets/img/svg_icon/4.svg')}}" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="{{asset('assets/img/svg_icon/3.svg')}}" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="{{asset('assets/img/svg_icon/1.svg')}}" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Available position</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- job_searcing_wrap  -->
+    <div class="job_searcing_wrap overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Looking for a Job?</h3>
+                        <p>We provide online instant cash loans with quick approval </p>
+                        <a href="#" class="boxed-btn3">Browse Job</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Looking for a Expert?</h3>
+                        <p>We provide online instant cash loans with quick approval </p>
+                        <a href="#" class="boxed-btn3">Post a Job</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_searcing_wrap end  -->
+
+    <!-- testimonial_area  -->
+    <div class="testimonial_area  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center mb-40">
+                        <h3>Testimonial</h3>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="{{asset('assets/img/testmonial/author.png')}}" alt="">
+                                            <div class="quote_icon">
+                                                <i class="Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="{{asset('assets/img/testmonial/author.png')}}" alt="">
+                                            <div class="quote_icon">
+                                                <i class=" Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="{{asset('assets/img/testmonial/author.png')}}" alt="">
+                                            <div class="quote_icon">
+                                                <i class="Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
+
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <img src="img/logo.png" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                finloan@support.com <br>
+                                +10 873 672 6782 <br>
+                                600/D, Green road, NewYork
+                            </p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="ti-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-lg-2">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".4s">
+                            <h3 class="footer_title">
+                                Company
+                            </h3>
+                            <ul>
+                                <li><a href="#">About </a></li>
+                                <li><a href="#"> Pricing</a></li>
+                                <li><a href="#">Carrier Tips</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
+                            <h3 class="footer_title">
+                                Category
+                            </h3>
+                            <ul>
+                                <li><a href="#">Design & Art</a></li>
+                                <li><a href="#">Engineering</a></li>
+                                <li><a href="#">Sales & Marketing</a></li>
+                                <li><a href="#">Finance</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
+                            <h3 class="footer_title">
+                                Subscribe
+                            </h3>
+                            <form action="#" class="newsletter_form">
+                                <input type="text" placeholder="Enter your mail">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                            <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
+                                luckily.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".3s">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ footer end  -->
+
+    <!-- link that opens popup -->
+    <!-- JS here -->
+    <script src="{{asset('assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/ajax-form.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+    <script src="{{asset('assets/js/scrollIt.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.scrollUp.min.js')}}"></script>
+    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('assets/js/nice-select.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins.js')}}"></script>
+    <script src="{{asset('assets/js/gijgo.min.js')}}"></script>
+
+
+
+    <!--contact js-->
+    <script src="{{asset('assets/js/contact.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.ajaxchimp.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.form.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('assets/js/mail-script.js')}}"></script>
+
+
+    <script src="{{asset('assets/js/main.js')}}"></script>
+</body>
+
 </html>
