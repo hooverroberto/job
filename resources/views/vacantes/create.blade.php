@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="font-semibold text-xl text-gray-800 leading-tight text-center mb-8">Publicar Vacantes</h1>
                     
-                    <div class="text-6xl text-center p-5 mt-5">
+                    <div class="text-6xl text-center p-5 my-10">
                      <livewire:crear-vacante />
                     </div>
 
