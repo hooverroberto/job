@@ -12,7 +12,7 @@
         />   
         
         @error('titulo')
-            {{$message}}
+            <livewire:mostrar-alerta :message="$message"/>
         @enderror
     </div>
     <div class="mt-6" style="padding-top: 25px;">
@@ -30,7 +30,9 @@
                 @endforeach
 
             </select>
-            
+            @error('salario')
+            <livewire:mostrar-alerta :message="$message"/>
+            @enderror
         </div>
        
     </div>
@@ -49,7 +51,9 @@
                     <option value="{{ $categoria->id}}">{{$categoria->categoria}}</option>
                 @endforeach
             </select>
-            
+            @error('categoria')
+            <livewire:mostrar-alerta :message="$message"/>
+            @enderror
         </div>
        
     </div>
@@ -63,7 +67,9 @@
         :value="old('empresa')" 
         placeholder="Empresa: Funval, Fundet"
         />       
-       
+       @error('empresa')
+            <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
     <div class="mt-6" style="padding-top: 25px;">
     <x-input-label for="ultmo_dia" :value="__('Último día para postularse')" class="text-l" />        
@@ -74,7 +80,9 @@
         wire:model="ultimo_dia" 
         :value="old('ultimo_dia')"         
         />       
-       
+       @error('ultimo_dia')
+            <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
     <div class="mt-6" style="padding-top: 25px;">
         <x-input-label for="descripcion" :value="__('Descripción Puesto')" class="text-l" />        
@@ -83,7 +91,9 @@
         placeholder="Descripción del puesto"  
         class="rounded border-gray-300 text-gray-600 shadow-sm focus:ring-indigo-500 w-3/4 h-72"   
         ></textarea>     
-       
+        @error('descripcion')
+            <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
     <div class="mt-6" style="padding-top: 25px;">
         <x-input-label for="imagen" :value="__('Imagen')" class="text-l" />        
@@ -91,11 +101,18 @@
         id="imagen" 
         class="justify-center mt-2 w-3/4" 
         type="file" 
-        wire:model="imagen"         
-        />      
+        wire:model="imagen" 
+        accept="image/*"        
+        />  
+        <div class="my-5" style="width:150px; height:150px;">
+            @if($imagen)
+                Imagen:
+                <img src="{{ $imagen->temporaryUrl()}}"/>
+            @endif
+        </div>    
         @error('imagen')
-            {{$message}}
-        @enderror 
+            <livewire:mostrar-alerta :message="$message"/>
+        @enderror
     </div>
     <div class="flex justify-center mt-5" style="padding-top: 30px;">
             <x-primary-button>
