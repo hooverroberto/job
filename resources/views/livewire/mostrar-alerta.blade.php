@@ -1,5 +1,3 @@
-<div class="flex justify-center mt-2">
-    <div class="w-3/4 px-4 py-2 text-white bg-red-600 rounded">
-        <p>El campo es requerido</p>
-    </div>
+<div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-2" role="alert">
+    <p>El campo es requerido.</p>
 </div>
