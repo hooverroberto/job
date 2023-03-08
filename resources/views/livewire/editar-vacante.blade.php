@@ -1,13 +1,13 @@
-<form class="md:w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
+<form class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
     <div class="mt-6">
-        <x-input-label for="titulo" :value="__('Título Vacante')" />        
+        <x-input-label for="titulo" :value="__('Título Vacante')"  />        
         <x-text-input 
-            id="titulo" 
-            class="block mt-1 w-full" 
-            type="text" 
-            wire:model="titulo" 
-            :value="old('titulo')" 
-            placeholder="Título vacante"
+        id="titulo" 
+        class="block mt-1 w-full" 
+        type="text" 
+        wire:model="titulo" 
+        :value="old('titulo')" 
+        placeholder="Título vacante"
         />   
         
         @error('titulo')
@@ -15,13 +15,13 @@
         @enderror
     </div>
     <div class="mt-6">
-        <x-input-label for="salario" :value="__('Salario Mensual')" />       
+        <x-input-label for="salario" :value="__('Salario Mensual')"/>       
        <div class="mt-4">
            
             <select
                 id=salario
                 wire:model=salario
-                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
+                class="ounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
             >
                 <option>-- Seleccione --</option>
                 @foreach($salarios as $salario)
@@ -35,8 +35,8 @@
         </div>
        
     </div>
-    <div class="mt-6">
-        <x-input-label for="categoria" :value="__('Categoría')" />       
+    <div class="mt-6" style="padding-top: 25px;">
+        <x-input-label for="categoria" :value="__('Categoría')" class="text-6xl" />       
        <div class="mt-4">
            
             <select
@@ -56,11 +56,11 @@
         </div>
        
     </div>
-    <div class="mt-6" >
-    <x-input-label for="empresa" :value="__('Empresa')"/>        
+    <div class="mt-6" style="padding-top: 25px;">
+    <x-input-label for="empresa" :value="__('Empresa')" class="text-l" />        
         <x-text-input 
         id="empresa" 
-        class="block mt-1 w-full"  
+        class="block mt-1 w-full" 
         type="text" 
         wire:model="empresa" 
         :value="old('empresa')" 
@@ -70,11 +70,11 @@
             <livewire:mostrar-alerta :message="$message"/>
         @enderror
     </div>
-    <div class="mt-6">
-    <x-input-label for="ultmo_dia" :value="__('Último día para postularse')"  />        
+    <div class="mt-6" style="padding-top: 25px;">
+    <x-input-label for="ultmo_dia" :value="__('Último día para postularse')" class="text-l" />        
         <x-text-input 
         id="ultimo_dia" 
-        class="block mt-1 w-full"  
+        class="block mt-1 w-full" 
         type="date" 
         wire:model="ultimo_dia" 
         :value="old('ultimo_dia')"         
@@ -83,41 +83,46 @@
             <livewire:mostrar-alerta :message="$message"/>
         @enderror
     </div>
-    <div class="mt-6">
-        <x-input-label for="descripcion" :value="__('Descripción Puesto')"/>        
+    <div class="mt-6" style="padding-top: 25px;">
+        <x-input-label for="descripcion" :value="__('Descripción Puesto')" class="text-l" />        
         <textarea
         wire:model="descripcion" 
         placeholder="Descripción del puesto"  
-        class="rounded border-gray-300 text-gray-600 shadow-sm focus:ring-indigo-500 h-72 w-full"   
+        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full h-72"   
         ></textarea>     
         @error('descripcion')
             <livewire:mostrar-alerta :message="$message"/>
         @enderror
     </div>
-    <div class="mt-6"">
-        <x-input-label for="imagen" :value="__('Imagen')"/>        
+    <div class="mt-6" style="padding-top: 25px;">
+        <x-input-label for="imagen" :value="__('Imagen')" class="text-l" />        
         <x-text-input 
         id="imagen" 
-        class="block mt-1 w-full"  
+        class="block mt-1 w-full" 
         type="file" 
-        wire:model="imagen" 
+        wire:model="imagen_nueva" 
         accept="image/*"        
-        />  
+        />
+
         <div class="my-5">
-            @if($imagen)
-                Imagen:
-                <img src="{{ $imagen->temporaryUrl()}}"/>
+            @if($imagen_nueva)
+            Imagen nueva:
+            <img src="{{ $imagen_nueva->temporaryUrl()}}"/>
             @endif
-        </div>    
-        @error('imagen')
+        </div> 
+
+        <div class="my-5 w-80">
+            <x-input-label :value="__('Imagen Actual')" />
+
+            <img src="{{ asset('storage/vacantes/' . $imagen)}}" alt="{{ 'Imagen Vacante ' . $titulo }}"/>
+        </div>   
+        @error('imagen_nueva')
             <livewire:mostrar-alerta :message="$message"/>
         @enderror
     </div>
     <div class="flex justify-center mt-5">
             <x-primary-button>
-                Crear vacantes
+                Guardar cambios
             </x-primary-button>
         </div>
 </form>
-
-
