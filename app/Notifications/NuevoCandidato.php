@@ -25,8 +25,10 @@ class NuevoCandidato extends Notification
      * Get the notification's delivery channels.
      *
      * @return array<int, string>
+     * object
+     * : array
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
         return ['mail', 'database'];
     }
@@ -36,10 +38,10 @@ class NuevoCandidato extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $url = url('/candidatos/'. $this->id_vacante);
+        $url = url('/notificaciones');
 
         return (new MailMessage)
-                    ->line('Has recibido un nurvo candidato en tu vacante.')
+                    ->line('Has recibido un nuevo candidato en tu vacante.')
                     ->line('La vacante es: ' . $this->nombre_vacante)
                     ->action('Ver notificaciones', $url)
                     ->line('Gracias por utilizar nuestra plataforma!');

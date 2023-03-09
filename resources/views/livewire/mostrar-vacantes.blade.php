@@ -12,7 +12,7 @@
 
                     <div class="flex flex-col md:flex-row gap-3 items-strech mt-7 md:mt-0">
                         <a 
-                            href="#"
+                            href="{{route('candidatos.index', $vacante)}}"
                             class="bg-orange-500 py-2 px-4 rounded-lg text-white text-xs text-center font-bold uppercase"
                         >
                             Candidatos
