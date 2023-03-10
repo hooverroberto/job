@@ -15,6 +15,7 @@
                             href="{{route('candidatos.index', $vacante)}}"
                             class="bg-orange-500 py-2 px-4 rounded-lg text-white text-xs text-center font-bold uppercase"
                         >
+                            {{ $vacante->candidatos->count()}}
                             Candidatos
                         </a>
 

@@ -12,9 +12,9 @@
                     <h1 class="text-2xl font-bold text-center my-10">Candidatos vacantes: {{ $vacante->titulo}}</h1>                    
                     
                     <div class="md:flex md:justify-center p-5">
-                        <ul class="divide-y divide-gray-400 w-full">
+                        <ul class="divide-y divide-gray-200 w-full">
                             @forelse ($vacante->candidatos as $candidato)
-                                <li class="p-3 items-center">
+                                <li class="p-3 flex items-center">
                                     <div class="flex-1">
                                         <p class="text-xl font-medium text-gray-800">{{$candidato->user->name}}</p>
                                         <p class="text-sm text-gray-600">{{$candidato->user->email}}</p>
@@ -23,9 +23,12 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <a class="p-2 inline-flex items-center shadow-sm px-2.5 py-0.5 border-gray-300 text-sm 
-                                        leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-100"
-                                        href="">
+                                        <a class="inline-flex items-center shadow-sm px-2.5 py-0.5 border-gray-300 text-sm 
+                                        leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-200 p-3 "
+                                        href="{{asset('storage/cv/' . $candidato->cv)}}"
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                        >
                                             Ver CV
                                         </a>
 

@@ -121,7 +121,7 @@
         @enderror
     </div>
     <div class="flex justify-center mt-5">
-            <x-primary-button>
+            <x-primary-button class="text-white bg-red-600">
                 Guardar cambios
             </x-primary-button>
         </div>

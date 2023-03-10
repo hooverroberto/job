@@ -14,8 +14,16 @@
                     @forelse ($notificaciones as $notificacion)
                     <div class="p-5 border border-gray-200">
                         <p>Tienes un nuevo candidato en:
-                            <span class="font-bold">{{$notificacion->data['nombre_vacante']}}</span>
+                            <span class="font-bold">{{$notificacion->data['id_vacante']}}</span>
                         </p>
+                        <p>
+                            <span class="font-bold">{{$notificacion->created_at->diffForHumans()}}</span>
+                        </p>
+                    </div>
+                    <div class="mt-5 lg:my-0">
+                        <a href="{{route('candidatos.index', $notificacion->data['id_vacante'])" class="bg-gray-500 p-3 text-sm uppercas font-bold text-white rounded-lg">
+                            Ver candidatos
+                        </a>
                     </div>
 
                     @empty
